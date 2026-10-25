@@ -1,0 +1,54 @@
+import { PricingPlan } from '../types';
+
+export const pricingPlans: PricingPlan[] = [
+  {
+    id: 'foundation',
+    name: 'Foundation',
+    tagline: 'Focused execution on one primary acquisition channel for early growth.',
+    price: '$4,500',
+    cadence: 'per month',
+    recommended: false,
+    idealFor: 'Emerging brands ready to establish a predictable, disciplined acquisition engine.',
+    deliverables: [
+      'Single channel mastery (SEO or Paid Acquisition)',
+      'Bi-weekly creative iteration & performance sprints',
+      'First-party conversion tracking & analytics setup',
+      'Monthly closed-loop executive performance reporting',
+      'Direct Slack access with your dedicated strategist',
+    ],
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
+    tagline: 'Our full-service marketing pod executing across all core growth levers.',
+    price: '$8,500',
+    cadence: 'per month',
+    recommended: true,
+    idealFor: 'Scaling companies seeking a complete, high-velocity marketing team without in-house overhead.',
+    deliverables: [
+      'Multi-channel strategy: SEO, Paid Ads (Google + Meta), and Content',
+      'Weekly rapid-fire creative production (static, video, and copy)',
+      'Lifecycle email marketing & conversion rate optimization',
+      'Continuous conversion rate testing & landing page refinement',
+      'Weekly pipeline reviews and executive strategy alignment',
+      'Dedicated Senior Marketing Director & Creative Pod',
+    ],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    tagline: 'Bespoke omnichannel scale, market positioning, and international expansion.',
+    price: '$15,000+',
+    cadence: 'per month',
+    recommended: false,
+    idealFor: 'Established category leaders requiring tailored marketing infrastructure and high-volume output.',
+    deliverables: [
+      'Complete omnichannel coverage across all 8 service pillars',
+      'Proprietary industry benchmark research & data journalism',
+      'Custom brand identity governance & executive thought leadership',
+      'Custom API attribution data modeling and CRM synchronization',
+      'Dedicated cross-functional team with 24-hour turnaround SLA',
+      'Quarterly in-person executive strategy summits',
+    ],
+  },
+];
