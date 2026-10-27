@@ -25,7 +25,7 @@ function loadConfetti(): Promise<void> {
   if (window.confetti) return Promise.resolve();
 
   if (!confettiReady) {
-    confettiReady = new Promise((resolve, reject) => {
+    confettiReady = new Promise<void>((resolve, reject) => {
       const script = document.createElement('script');
       script.src = CONFETTI_SCRIPT;
       script.async = true;
@@ -41,7 +41,7 @@ function loadConfetti(): Promise<void> {
     });
   }
 
-  return confettiReady;
+  return confettiReady!;
 }
 
 function firePricingConfetti() {

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 const THREE_SCRIPT = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
-const VANTA_FOG_SCRIPT = 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js';
+const VANTA_FOG_SCRIPT = 'https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js';
 
 let vantaFogPromise: Promise<void> | null = null;
 
@@ -117,7 +117,7 @@ export function VantaSmoke({
       cancelled = true;
       effect?.destroy();
     };
-  }, [highlightColor, midtoneColor, lowlightColor, baseColor, speed]);
+  }, [highlightColor, midtoneColor, lowlightColor, baseColor, blurFactor, speed]);
 
   return <div ref={containerRef} aria-hidden="true" className={className} />;
 }

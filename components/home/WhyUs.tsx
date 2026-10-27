@@ -1,6 +1,5 @@
 import { Section } from '../common/Section';
 import { FadeIn } from '../common/FadeIn';
-import { StatCounter } from '../common/StatCounter';
 import { ShieldCheck, Target, BarChart3 } from 'lucide-react';
 
 export function WhyUs() {

@@ -70,7 +70,7 @@ export function VantaClouds({ className = '' }: { className?: string }) {
       />
       {threeReady && (
         <Script
-          src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"
+          src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js"
           strategy="afterInteractive"
           onReady={() => setVantaReady(true)}
         />

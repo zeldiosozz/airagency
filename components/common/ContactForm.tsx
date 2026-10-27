@@ -11,6 +11,7 @@ interface FormData {
   primaryService: string;
   monthlyBudget: string;
   projectOverview: string;
+  website: string;
 }
 
 interface FormErrors {
@@ -28,11 +29,13 @@ export function ContactForm() {
     primaryService: 'SEO & Organic Growth',
     monthlyBudget: '$5,000 – 10,000 L.E',
     projectOverview: '',
+    website: '',
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -73,16 +76,35 @@ export function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate brief network submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const result = (await response.json().catch(() => ({}))) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error || 'We could not send your inquiry. Please try again.');
+      }
+
       setSubmitted(true);
-    }, 600);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'We could not send your inquiry. Please try again or email hello@airmarketingagency.com.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -112,6 +134,7 @@ export function ContactForm() {
               primaryService: 'SEO & Organic Growth',
               monthlyBudget: '$5,000 – 10,000 L.E',
               projectOverview: '',
+              website: '',
             });
           }}
         >
@@ -129,6 +152,21 @@ export function ContactForm() {
       className="bg-white border border-neutral-200/90 rounded-2xl p-6 sm:p-10 shadow-xs max-w-2xl mx-auto"
     >
       <div className="space-y-6">
+        <div
+          aria-hidden="true"
+          className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
+        >
+          <label htmlFor="website">Leave this field empty</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData.website}
+            onChange={handleChange}
+          />
+        </div>
         {/* Name & Work Email */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
@@ -283,6 +321,11 @@ export function ContactForm() {
 
         {/* ONE clear primary submit button */}
         <div className="pt-2">
+          {submitError && (
+            <p role="alert" className="mb-3 text-sm text-red-600">
+              {submitError}
+            </p>
+          )}
           <Button
             type="submit"
             id="contact-form-submit-btn"

@@ -6,7 +6,6 @@ import { Button } from '../components/common/Button';
 import { PricingCTAButton } from '../components/common/PricingCTAButton';
 import { VantaSmoke } from '../components/common/VantaSmoke';
 import { Check, ArrowRight, HelpCircle } from 'lucide-react';
-import { VantaClouds } from '@/components/common/VantaClouds';
 
 export function PricingPage() {
   const schema = {

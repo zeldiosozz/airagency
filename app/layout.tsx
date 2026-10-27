@@ -3,7 +3,11 @@ import type { ReactNode } from "react";
 import { WhatsAppBubble } from "../components/layout/WhatsAppBubble";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
+
 export const metadata: Metadata = {
+  metadataBase,
   title: {
     default: "Air Marketing Agency — Full-Service Growth & Brand Strategy",
     template: "%s | Air Marketing Agency",
