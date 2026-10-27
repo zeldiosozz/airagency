@@ -28,7 +28,7 @@ export function WhyUs() {
         {/* Section Header */}
         <div className="max-w-2xl mb-16">
           <span className="text-xs uppercase tracking-wider font-semibold text-neutral-500 block mb-2">
-            Why Vanguard
+            Why Air Marketing Agency
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 mb-4">
             Built for founders who value capital discipline.
@@ -62,7 +62,7 @@ export function WhyUs() {
         </div>
 
         {/* Highlight Stats Row */}
-        <div className="p-8 sm:p-10 bg-neutral-900 text-white rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-neutral-800">
+        {/* <div className="p-8 sm:p-10 bg-neutral-900 text-white rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-neutral-800">
           <div className="sm:pr-6">
             <StatCounter
               value="$48M+"
@@ -84,7 +84,7 @@ export function WhyUs() {
               context="Demonstrated through multi-year strategic advisory relationships."
             />
           </div>
-        </div>
+        </div> */}
       </FadeIn>
     </Section>
   );

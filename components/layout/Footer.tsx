@@ -21,6 +21,7 @@ export function Footer() {
                 width={415}
                 height={180}
                 className="h-12 w-auto object-contain"
+                loading='eager'
               />
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-sm">
@@ -29,7 +30,7 @@ export function Footer() {
             </p>
             <div className="pt-2">
               <span className="inline-block text-xs uppercase tracking-wider text-neutral-500 font-medium">
-                San Francisco • New York • Remote
+               New Cairo • El Nozha • Remote
               </span>
             </div>
           </div>
@@ -96,10 +97,10 @@ export function Footer() {
                 </Link>
               </li>
               <li className="text-neutral-400 text-sm">
-                hello@vanguardagency.com
+                hello@airmarketingagency.com
               </li>
               <li className="text-neutral-400 text-sm">
-                +1 (415) 890-2140
+                +20 (10) 99398877
               </li>
             </ul>
           </div>
@@ -107,7 +108,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-          <p>© 2026 Vanguard Marketing Agency Inc. All rights reserved.</p>
+          <p>© 2026 Air Marketing Agency Inc. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" id="footer-privacy" className="hover:text-neutral-400 transition-colors">
               Privacy Policy

@@ -56,6 +56,7 @@ export function Header() {
             height={180}
             className="h-14 w-auto rounded-sm sm:h-16"
             priority
+            loading="eager"
           />
         </Link>
 

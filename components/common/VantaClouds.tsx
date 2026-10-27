@@ -15,6 +15,22 @@ declare global {
         gyroControls: boolean;
         minHeight: number;
         minWidth: number;
+        speed: number;
+      }) => VantaEffect;
+      FOG: (options: {
+        el: HTMLElement;
+        mouseControls: boolean;
+        touchControls: boolean;
+        gyroControls: boolean;
+        minHeight: number;
+        minWidth: number;
+        highlightColor: number;
+        midtoneColor: number;
+        lowlightColor: number;
+        baseColor: number;
+        speed: number;
+        zoom: number;
+        blurFactor: number;
       }) => VantaEffect;
     };
   }
@@ -36,8 +52,9 @@ export function VantaClouds({ className = '' }: { className?: string }) {
       mouseControls: false,
       touchControls: false,
       gyroControls: false,
-      minHeight: 200,
-      minWidth: 200,
+      minHeight: 300,
+      minWidth: 300,
+      speed:2,
     });
 
     return () => effect.destroy();

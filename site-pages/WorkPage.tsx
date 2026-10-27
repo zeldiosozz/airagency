@@ -29,7 +29,7 @@ export function WorkPage() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Case Studies — Vanguard Marketing Agency',
+    name: 'Case Studies — Air Marketing Agency',
     description: 'Detailed case studies and documented commercial results for high-growth companies.',
     hasPart: caseStudiesData.map((cs) => ({
       '@type': 'Article',
@@ -41,7 +41,7 @@ export function WorkPage() {
   return (
     <div id="page-work" className="w-full">
       <SEOHead
-        title="Case Studies & Work — Vanguard Marketing Agency"
+        title="Case Studies & Work — Air Marketing Agency"
         description="Explore detailed case studies showing how we lowered CAC, scaled organic inbound pipelines, and repositioned brands for long-term growth."
         schema={schema}
       />

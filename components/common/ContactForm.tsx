@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button } from './Button';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ChevronDown } from 'lucide-react';
 
 interface FormData {
   fullName: string;
@@ -26,7 +26,7 @@ export function ContactForm() {
     workEmail: '',
     companyName: '',
     primaryService: 'SEO & Organic Growth',
-    monthlyBudget: '$5,000 – $10,000',
+    monthlyBudget: '$5,000 – 10,000 L.E',
     projectOverview: '',
   });
 
@@ -69,6 +69,10 @@ export function ContactForm() {
     }
   };
 
+  const handleSelectChange = (name: 'primaryService' | 'monthlyBudget', value: string) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
@@ -106,7 +110,7 @@ export function ContactForm() {
               workEmail: '',
               companyName: '',
               primaryService: 'SEO & Organic Growth',
-              monthlyBudget: '$5,000 – $10,000',
+              monthlyBudget: '$5,000 – 10,000 L.E',
               projectOverview: '',
             });
           }}
@@ -205,23 +209,23 @@ export function ContactForm() {
             >
               Primary Focus Area
             </label>
-            <select
+            <ScopedSelect
               id="primaryService"
-              name="primaryService"
               value={formData.primaryService}
-              onChange={handleChange}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 text-sm text-neutral-900 bg-white focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors cursor-pointer"
-            >
-              <option value="SEO & Organic Growth">Search Engine Optimization (SEO)</option>
-              <option value="Paid Acquisition">Paid Advertising (Google/Meta/TikTok)</option>
-              <option value="Social Media Management">Social Media Management</option>
-              <option value="Content Marketing">Content Marketing & Research</option>
-              <option value="Branding & Identity">Branding & Identity</option>
-              <option value="Email Marketing">Email Marketing & Lifecycle</option>
-              <option value="Marketing Strategy">Marketing Strategy & Consulting</option>
-              <option value="Web Design & Development">Web Design & Development</option>
-              <option value="Full-Service Engagement">Full-Service (Multi-Channel)</option>
-            </select>
+              options={[
+                { value: 'SEO & Organic Growth', label: 'Search Engine Optimization (SEO)' },
+                { value: 'Paid Acquisition', label: 'Paid Advertising (Google/Meta/TikTok)' },
+                { value: 'Social Media Management', label: 'Social Media Management' },
+                { value: 'Content Marketing', label: 'Content Marketing & Research' },
+                { value: 'Branding & Identity', label: 'Branding & Identity' },
+                { value: 'Email Marketing', label: 'Email Marketing & Lifecycle' },
+                { value: 'Marketing Strategy', label: 'Marketing Strategy & Consulting' },
+                { value: 'Web Design & Development', label: 'Web Design & Development' },
+                { value: 'Full-Service Engagement', label: 'Full-Service (Multi-Channel)' },
+              ]}
+              onChange={(value) => handleSelectChange('primaryService', value)}
+            />
+            <input type="hidden" name="primaryService" value={formData.primaryService} />
           </div>
         </div>
 
@@ -233,18 +237,18 @@ export function ContactForm() {
           >
             Estimated Monthly Marketing Budget
           </label>
-          <select
+          <ScopedSelect
             id="monthlyBudget"
-            name="monthlyBudget"
             value={formData.monthlyBudget}
-            onChange={handleChange}
-            className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 text-sm text-neutral-900 bg-white focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors cursor-pointer"
-          >
-            <option value="Under $5,000">Under $5,000 / month</option>
-            <option value="$5,000 – $10,000">$5,000 – $10,000 / month (Foundation/Growth)</option>
-            <option value="$10,000 – $25,000">$10,000 – $25,000 / month (Multi-channel)</option>
-            <option value="$25,000+">$25,000+ / month (Enterprise Scale)</option>
-          </select>
+            options={[
+              { value: 'Under 10,000 L.E', label: 'Under 10,000 L.E / month' },
+              { value: '10,000 – 25,500 L.E', label: '10,000 – 25,500 L.E / month (Foundation/Growth)' },
+              { value: '25,500 L.E – 35,000 L.E', label: '25,500 L.E – 35,000 L.E / month (Multi-channel)' },
+              { value: '35,800 L.E+', label: '45,000 L.E+ / month (Enterprise Scale)' },
+            ]}
+            onChange={(value) => handleSelectChange('monthlyBudget', value)}
+          />
+          <input type="hidden" name="monthlyBudget" value={formData.monthlyBudget} />
         </div>
 
         {/* Project Overview */}
@@ -297,5 +301,114 @@ export function ContactForm() {
         </p>
       </div>
     </form>
+  );
+}
+
+interface ScopedSelectProps {
+  id: string;
+  value: string;
+  options: { value: string; label: string }[];
+  onChange: (value: string) => void;
+}
+
+function ScopedSelect({ id, value, options, onChange }: ScopedSelectProps) {
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(() =>
+    Math.max(0, options.findIndex((option) => option.value === value))
+  );
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  const selectedOption = options.find((option) => option.value === value) ?? options[0];
+
+  React.useEffect(() => {
+    if (!open) return;
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+
+    document.addEventListener('pointerdown', closeOnOutsideClick);
+    return () => document.removeEventListener('pointerdown', closeOnOutsideClick);
+  }, [open]);
+
+  const chooseOption = (index: number) => {
+    const option = options[index];
+    if (!option) return;
+    onChange(option.value);
+    setActiveIndex(index);
+    setOpen(false);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setOpen(true);
+      setActiveIndex((current) => (open ? (current + 1) % options.length : Math.max(0, options.findIndex((option) => option.value === value))));
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setOpen(true);
+      setActiveIndex((current) => (open ? (current - 1 + options.length) % options.length : Math.max(0, options.findIndex((option) => option.value === value))));
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      setOpen(true);
+      setActiveIndex(0);
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      setOpen(true);
+      setActiveIndex(options.length - 1);
+    } else if ((event.key === 'Enter' || event.key === ' ') && open) {
+      event.preventDefault();
+      chooseOption(activeIndex);
+    } else if (event.key === 'Escape') {
+      setOpen(false);
+    }
+  };
+
+  return (
+    <div ref={rootRef} className="relative w-full">
+      <button
+        id={id}
+        type="button"
+        role="combobox"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={`${id}-options`}
+        aria-activedescendant={open ? `${id}-option-${activeIndex}` : undefined}
+        onClick={() => {
+          setActiveIndex(Math.max(0, options.findIndex((option) => option.value === value)));
+          setOpen((current) => !current);
+        }}
+        onKeyDown={handleKeyDown}
+        className="flex w-full items-center justify-between gap-3 rounded-lg border border-neutral-300 bg-white px-3.5 py-2.5 text-left text-sm text-neutral-900 transition-colors hover:border-neutral-400 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+      >
+        <span className="min-w-0 flex-1 truncate">{selectedOption?.label}</span>
+        <ChevronDown aria-hidden="true" className="h-4 w-4 shrink-0" />
+      </button>
+
+      {open && (
+        <ul
+          id={`${id}-options`}
+          role="listbox"
+          aria-labelledby={id}
+          className="absolute left-0 right-0 top-full z-50 mt-1 max-h-60 overflow-y-auto overscroll-contain rounded-lg border border-neutral-200 bg-white py-1 shadow-lg"
+        >
+          {options.map((option, index) => (
+            <li
+              key={option.value}
+              id={`${id}-option-${index}`}
+              role="option"
+              aria-selected={option.value === value}
+              onMouseEnter={() => setActiveIndex(index)}
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => chooseOption(index)}
+              className={`cursor-pointer break-words px-3.5 py-2 text-sm text-neutral-800 hover:bg-blue-50 ${
+                index === activeIndex ? 'bg-blue-50' : ''
+              }`}
+            >
+              {option.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }

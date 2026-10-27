@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const study = caseStudiesData.find((item) => item.slug === slug);
   if (!study) return {};
   return {
-    title: `${study.title} — Vanguard Case Study`,
+    title: `${study.title} — Air Marketing Agency Case Study`,
     description: study.summary,
   };
 }

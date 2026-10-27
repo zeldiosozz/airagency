@@ -20,7 +20,7 @@ export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
     description: service.shortSummary,
     provider: {
       '@type': 'Organization',
-      name: 'Vanguard Marketing Agency',
+      name: 'Air Marketing Agency',
     },
     serviceType: service.title,
   };
@@ -28,7 +28,7 @@ export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
   return (
     <div id={`page-service-${service.slug}`} className="w-full">
       <SEOHead
-        title={`${service.title} — Vanguard Marketing Agency`}
+        title={`${service.title} — Air Marketing Agency`}
         description={service.shortSummary}
         schema={schema}
       />

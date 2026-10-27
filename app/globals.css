@@ -17,3 +17,28 @@ body {
   color: #171717;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes client-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.client-marquee-track {
+  animation: client-marquee-scroll 32s linear infinite;
+}
+
+.client-marquee:hover .client-marquee-track,
+.client-marquee:focus-within .client-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-marquee-track {
+    animation: none;
+  }
+
+  .client-marquee-track > [aria-hidden='true'] {
+    display: none;
+  }
+}

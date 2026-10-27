@@ -7,7 +7,7 @@ export function NotFoundPage() {
   return (
     <div id="page-not-found" className="w-full">
       <SEOHead
-        title="Page Not Found — Vanguard Marketing Agency"
+        title="Page Not Found — Air Marketing Agency"
         description="The requested page could not be located."
       />
       <Section className="py-28 sm:py-36 text-center">

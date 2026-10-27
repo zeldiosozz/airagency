@@ -8,14 +8,14 @@ export function ContactPage() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
-    name: 'Contact Vanguard Marketing Agency',
+    name: 'Contact Air Marketing Agency',
     description: 'Start a commercial inquiry or request a marketing consultation with our senior strategy team.',
   };
 
   return (
     <div id="page-contact" className="w-full">
       <SEOHead
-        title="Contact Us — Vanguard Marketing Agency"
+        title="Contact Us — Air Marketing Agency"
         description="Schedule a strategy consultation or request a growth audit. Let's discuss your commercial targets."
         schema={schema}
       />
@@ -51,15 +51,15 @@ export function ContactPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-neutral-600">
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-neutral-400 shrink-0" />
-              <span>hello@vanguardagency.com</span>
+              <span>hello@airmarketingagency.com</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-neutral-400 shrink-0" />
-              <span>+1 (415) 890-2140</span>
+              <span>+20 (10) 99398877</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-neutral-400 shrink-0" />
-              <span>San Francisco • New York</span>
+              <span>New Cairo • EL Nozha</span>
             </div>
           </div>
           <p className="text-xs text-neutral-400 mt-4">

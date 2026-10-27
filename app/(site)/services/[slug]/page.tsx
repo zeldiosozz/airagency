@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = servicesData.find((item) => item.slug === slug);
   if (!service) return {};
-  return { title: `${service.title} — Vanguard Marketing Agency`, description: service.shortSummary };
+  return { title: `${service.title} — Air Marketing Agency`, description: service.shortSummary };
 }
 
 export default function Page({ params }: Props) {

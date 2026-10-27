@@ -20,11 +20,11 @@ export function CaseStudyDetailPage({ slug }: CaseStudyDetailPageProps) {
     description: caseStudy.summary,
     author: {
       '@type': 'Organization',
-      name: 'Vanguard Marketing Agency',
+      name: 'Air Marketing Agency',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Vanguard Marketing Agency',
+      name: 'Air Marketing Agency',
     },
     about: {
       '@type': 'Thing',
@@ -35,7 +35,7 @@ export function CaseStudyDetailPage({ slug }: CaseStudyDetailPageProps) {
   return (
     <div id={`page-case-study-${caseStudy.slug}`} className="w-full">
       <SEOHead
-        title={`${caseStudy.title} — Vanguard Case Study`}
+        title={`${caseStudy.title} — Air Marketing Agency Case Study`}
         description={caseStudy.summary}
         schema={schema}
       />

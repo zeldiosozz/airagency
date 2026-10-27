@@ -3,7 +3,7 @@ import { TeamMember } from '../types';
 export const aboutData = {
   mission: {
     headline: 'Eliminating marketing noise with disciplined, compounding strategy.',
-    statement: 'Most marketing fails because teams chase disjointed tactics without unified strategy or accountability. We founded Vanguard to deliver full-service marketing that operates with the financial discipline of an executive leadership team and the relentless craftsmanship of world-class creators.',
+    statement: 'Most marketing fails because teams chase disjointed tactics without unified strategy or accountability. We founded Air Marketing Agency to deliver full-service marketing that operates with the financial discipline of an executive leadership team and the relentless craftsmanship of world-class creators.',
   },
   principles: [
     {

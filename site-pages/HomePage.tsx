@@ -11,9 +11,9 @@ export function HomePage() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Vanguard Marketing Agency',
+    name: 'Air Marketing Agency',
     description: 'Full-service marketing agency providing SEO, paid advertising, content marketing, branding, and strategic consulting.',
-    url: 'https://vanguardagency.com',
+    url: 'https://airmarketingagency.com',
     priceRange: '$$$$',
     address: {
       '@type': 'PostalAddress',
@@ -36,7 +36,7 @@ export function HomePage() {
   return (
     <div id="page-home" className="flex flex-col w-full">
       <SEOHead
-        title="Vanguard Marketing Agency — Full-Service Growth & Brand Strategy"
+        title="Air Marketing Agency — Full-Service Growth & Brand Strategy"
         description="Full-service marketing agency delivering measurable growth across SEO, paid acquisition, branding, content, and marketing strategy."
         schema={schema}
       />

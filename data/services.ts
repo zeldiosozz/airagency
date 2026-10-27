@@ -250,7 +250,7 @@ export const servicesData: Service[] = [
     id: 'marketing-strategy',
     slug: 'marketing-strategy',
     title: 'Marketing Strategy & Consulting',
-    lottieType: '',
+    lottieType: 'Digital Marketing',
 
     tagline: 'Data-grounded go-to-market plans and executive advisory for ambitious leadership.',
     shortSummary: 'Clear go-to-market roadmaps, budget modeling, and channel prioritization that remove guesswork from your growth investments.',
@@ -291,7 +291,7 @@ export const servicesData: Service[] = [
     id: 'web-design',
     slug: 'web-design-development',
     title: 'Web Design & Development',
-    lottieType: '',
+    lottieType: 'Web Development',
 
     tagline: 'Clean, conversion-engineered digital experiences built for speed and clarity.',
     shortSummary: 'High-converting marketing websites crafted as one seamless part of your overarching acquisition strategy.',

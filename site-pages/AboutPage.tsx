@@ -9,14 +9,14 @@ export function AboutPage() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
-    name: 'About Vanguard Marketing Agency',
+    name: 'About Air Marketing Agency',
     description: 'Learn about our mission, principles, execution process, and senior leadership team.',
   };
 
   return (
     <div id="page-about" className="w-full">
       <SEOHead
-        title="About Us — Vanguard Marketing Agency"
+        title="About Us — Air Marketing Agency"
         description="Learn about our mission, principles, execution process, and senior leadership team dedicated to compounding marketing returns."
         schema={schema}
       />
